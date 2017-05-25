@@ -1,0 +1,39 @@
+body{
+  font-family: Arial;
+  margin: 0;
+  background: mintcream;
+}
+.svg-icon-lib {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+}
+svg {
+  width: 50px;
+  cursor: pointer;
+}
+.b-container-icons{
+  max-width: 1080px;
+  margin: auto;
+  text-align: center;
+  padding: 0 10px;
+}
+.b-container-icons .b-list-icons{
+  list-style: none;
+  padding: 0;
+}
+.b-container-icons .b-list-icons li{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.b-container-icons .b-list-icons li p{
+  width: 70%;
+  text-align: justify;
+  margin-left: 10px;
+}

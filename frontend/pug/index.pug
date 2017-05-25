@@ -1,0 +1,16 @@
+include ./mixin-svg.pug
+- var icons = ["calendario", "check", "cuota", "dinero", "duda", "home", "icon_check_thankyou", "lista", "reloj"]
+
+doctype html
+html
+	head
+		link(href='css/style.css', rel='stylesheet')
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+	body
+		section.b-container-icons
+			h1 Svg Icons
+			ul.b-list-icons
+				each val in icons
+					li
+						+svg(val)
+						p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
