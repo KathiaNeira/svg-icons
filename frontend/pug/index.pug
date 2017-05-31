@@ -1,5 +1,7 @@
 include ./mixin-svg.pug
+include ./mixin-image-svg.pug
 - var icons = ["calendario", "check", "cuota", "dinero", "duda", "home", "icon_check_thankyou", "lista", "reloj"]
+- var images = ["facebook-line", "facebook", "google-line", "google", "heart-line", "heart", "pinterest-line", "twitter-line", "twitter"]
 
 doctype html
 html
@@ -13,4 +15,10 @@ html
 				each val in icons
 					li
 						+svg(val)
+						p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+			ul.b-list-icons
+				each val in images
+					li
+						+image-svg(val)
 						p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

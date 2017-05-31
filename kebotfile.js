@@ -7,4 +7,14 @@ kebot.task({
 kebot.task({
 	alias : 'pug',
 	entry : './pug.js'
+});
+
+kebot.task({
+	alias : 'getSvg',
+	entry : './getSvg.js'
+});
+
+kebot.task({
+	alias : 'gulpfile',
+	entry : './gulpfile.js'
 })
