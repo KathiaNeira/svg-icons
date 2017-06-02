@@ -21,7 +21,7 @@ filesInput.forEach(function(element, index) {
       inlineRuntimeFunctions: true
     });
 
-    var html = compiledFunction();
+    var html = compiledFunction({prod:true});
     var outsrc = pathNode.resolve(src, name);
     fs.writeFileSync(outsrc, html, 'utf-8');
 });

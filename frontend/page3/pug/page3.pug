@@ -1,5 +1,10 @@
 include ../../pug/mixin-svg-local.pug
-- var urlPage3 = "/src/svg/symbols-page3.svg"
+- var urlPage3 = ""
+- if(prod){
+- urlPage3 = "/svg-icons/src/svg/symbols-page3.svg"
+- }else{
+- urlPage3 = "/src/svg/symbols-page3.svg"
+- }
 doctype html
 html
 	head
