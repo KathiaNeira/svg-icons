@@ -9,6 +9,10 @@ html
 		link(href='css/style.css', rel='stylesheet')
 		meta(name="viewport" content="width=device-width, initial-scale=1")
 	body
+		nav
+			a(href="page1") Page1
+			a(href="page2") Page2
+			a(href="page3") Page3
 		section.b-container-icons
 			h1 Svg Icons
 			ul.b-list-icons
@@ -17,8 +21,8 @@ html
 						+svg(val)
 						p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
-			ul.b-list-icons
-				each val in images
-					li
-						+image-svg(val)
-						p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			//- ul.b-list-icons
+			//- 	each val in images
+			//- 		li
+			//- 			+image-svg(val)
+			//- 			p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

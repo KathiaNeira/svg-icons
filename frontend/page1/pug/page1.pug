@@ -1,0 +1,11 @@
+include ../../pug/mixin-svg-local.pug
+- var urlPage1 = "/src/svg/symbols-page1.svg"
+doctype html
+html
+	head
+		link(href='css/style.css', rel='stylesheet')
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+	body
+		h1 page1
+		+svgPage(urlPage1, "facebook")
+		+svgPage(urlPage1, "google")

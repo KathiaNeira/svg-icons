@@ -1,0 +1,10 @@
+include ../../pug/mixin-svg-local.pug
+- var urlPage3 = "/src/svg/symbols-page3.svg"
+doctype html
+html
+	head
+		link(href='css/style.css', rel='stylesheet')
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+	body
+		h1 page3
+		+svgPage(urlPage3, "pinterest-line")

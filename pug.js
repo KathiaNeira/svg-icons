@@ -1,7 +1,9 @@
 var pug = require('pug');
 var fs = require('fs');
 var glob = require("glob");
-var pattern = __dirname + "/frontend/pug/*.pug";
+var glob = require('glob-all');
+var pattern = glob.sync([__dirname + '/frontend/**/**/*.pug']);
+//var pattern = __dirname + "/frontend/pug/*.pug";
 var src = __dirname;
 var pathNode = require("path");
 

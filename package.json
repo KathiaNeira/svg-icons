@@ -11,6 +11,7 @@
   "devDependencies": {
     "express": "^4.15.3",
     "glob": "^7.1.2",
+    "glob-all": "^3.1.0",
     "gulp": "^3.9.1",
     "gulp-svg-symbols": "^2.0.2",
     "kebot": "0.0.7",

@@ -1,10 +1,10 @@
 var path = require('path');
 var fs = require('fs');
 var path = require("path");
-
+var glob = require('glob-all');
 // Declaring folder source and destination
 var folder = __dirname + "/images";
-var desc = __dirname + "/assest";
+var desc = __dirname + "/src/svg";
 var attrSvg = "xmlns='http://www.w3.org/2000/svg' class='svg-icon-lib'";
 
 removeXml = function(fileSvg){
@@ -42,41 +42,42 @@ cleanSvg = function(svg){
 };
 
 IteratingFiles = function(){
-	var files = fs.readdirSync(folder);
-	var svgIcons = "";
-	for(var i=0; i<files.length; i++){
-		var pathSvg= folder+'/'+files[i];
-		var file = files[i].split(".")[0];
-  	var nameId = file.replace('.svg', '');
-		var fileSvg = fs.readFileSync(pathSvg, 'utf8');
-		var finalSvg = cleanSvg(fileSvg);
-		var generateNewSymbol= generateSymbol(finalSvg, nameId);
-		svgIcons+=generateNewSymbol;
-	}
-	return svgIcons;
-};
-
-writeFiles = function(){
-	var newSymbols = IteratingFiles()
-	fs.writeFileSync(desc+'/example.svg', "<svg "+attrSvg+">"+newSymbols+"</svg>", 'utf8');
-};
-
-createNewFile = function(){
-	var newSymbols = IteratingFiles();
-	var writeStream = fs.createWriteStream(desc+'/example.svg');
-	writeStream.write("<svg "+attrSvg+">"+newSymbols+"</svg>");
-};
-
-generateFileSymbols = function(){
-	fs.open(desc+'/example.svg', 'wx', (err, fd) => {
-		if (err) {
-    		if (err.code === 'EEXIST') {
-					writeFiles();
-				}
-		}else{
-			createNewFile();
-		}
+	var folderConfig = glob.sync([__dirname + '/frontend/**/_*.js']);
+	var newSvgConvertSymbols="";
+	folderConfig.forEach(function(fileConfigSvg) {
+		var readFileConfig = require(fileConfigSvg);
+		var chunkFile = fileConfigSvg.split('/');
+		var namePage = chunkFile[chunkFile.length-2];
+		readFileConfig.forEach(function(nameSvg){
+			var pathImageSvg= folder+'/'+nameSvg+'.svg';
+			var svgOrigin = fs.readFileSync(pathImageSvg, 'utf8');
+			var newSvg = cleanSvg(svgOrigin);
+			var generateNewSymbols= generateSymbol(newSvg, nameSvg);
+			newSvgConvertSymbols+=generateNewSymbols;
+		});
+		generateFileSymbols(desc, namePage, newSvgConvertSymbols);
+		newSvgConvertSymbols="";
 	});
 };
 
-generateFileSymbols();
+writeFiles = function(desc, name,newSymbols){
+	fs.writeFileSync(desc+'/symbols-'+name+'.svg', "<svg "+attrSvg+">"+newSymbols+"</svg>", 'utf8');
+};
+
+createNewFile = function(desc, name, newSymbols){
+	var writeStream = fs.createWriteStream(desc+'/symbols-'+name+'.svg');
+	writeStream.write("<svg "+attrSvg+">"+newSymbols+"</svg>");
+};
+
+generateFileSymbols = function(desc,name, newSymbols){
+	fs.open(desc+'/symbols-'+name+'.svg', 'wx', (err, fd) => {
+		if (err) {
+    		if (err.code === 'EEXIST') {
+					writeFiles(desc, name, newSymbols);
+				}
+		}else{
+			createNewFile(desc, name, newSymbols);
+		}
+	});
+};
+IteratingFiles();
