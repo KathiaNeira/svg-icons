@@ -11,10 +11,10 @@
   "devDependencies": {
     "express": "^4.15.3",
     "glob": "^7.1.2",
-    "glob-all": "^3.1.0",
+    "globule": "^1.1.0",
     "gulp": "^3.9.1",
     "gulp-svg-symbols": "^2.0.2",
-    "kebot": "0.0.7",
+    "kebot": "0.0.8",
     "path": "^0.12.7",
     "pug": "^2.0.0-rc.1",
     "pug-cli": "^1.0.0-alpha6",
