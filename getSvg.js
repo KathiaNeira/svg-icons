@@ -1,6 +1,5 @@
 var path = require('path');
 var fs = require('fs');
-var path = require("path");
 var attrSvg = "xmlns='http://www.w3.org/2000/svg' class='svg-icon-lib'";
 //
 var config = require("./svgConfig");

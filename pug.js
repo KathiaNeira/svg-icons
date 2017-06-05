@@ -1,13 +1,12 @@
 var pug = require('pug');
 var fs = require('fs');
-var glob = require("glob");
-var glob = require('glob-all');
-var pattern = glob.sync([__dirname + '/frontend/**/**/*.pug']);
+var globule = require("globule");
+var pattern = globule.find([__dirname + '/frontend/**/**/*.pug']);
 //var pattern = __dirname + "/frontend/pug/*.pug";
 var src = __dirname;
 var pathNode = require("path");
 
-var filesInput = glob.sync(pattern);
+var filesInput = globule.find(pattern);
 
 // Compile the source code
 filesInput.forEach(function(element, index) {
@@ -21,7 +20,7 @@ filesInput.forEach(function(element, index) {
       inlineRuntimeFunctions: true
     });
 
-    var html = compiledFunction({prod:true});
+    var html = compiledFunction({prod:false});
     var outsrc = pathNode.resolve(src, name);
     fs.writeFileSync(outsrc, html, 'utf-8');
 });
